@@ -11,8 +11,11 @@ class Role(AbstractBaseModel):
         (PATIENT, "Patient"),
         (PROVIDER, "Provider"),
     ]
-    name = models.CharField()
-    type = models.CharField(choices=TYPE_CHOICES)
+    name = models.CharField(max_length=255)
+    type = models.CharField(
+        max_length=255,
+        choices=TYPE_CHOICES,
+    )
 
     def is_patient(self):
         return self.type == self.PATIENT
