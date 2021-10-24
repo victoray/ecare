@@ -1,7 +1,9 @@
 from django.db import models
 
+from ecare.core.models import AbstractBaseModel
 
-class Role(models.Model):
+
+class Role(AbstractBaseModel):
     PATIENT = "patient"
     PROVIDER = "provider"
 
@@ -17,3 +19,6 @@ class Role(models.Model):
 
     def is_provider(self):
         return self.type == self.PROVIDER
+
+    class Meta:
+        unique_together = ("name", "type")
