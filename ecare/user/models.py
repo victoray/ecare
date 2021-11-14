@@ -4,6 +4,7 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 
 from ecare.core.models import AbstractBaseModel
+from ecare.role.models import Role
 
 
 class User(PermissionsMixin, AbstractBaseUser, AbstractBaseModel):
@@ -41,8 +42,11 @@ class User(PermissionsMixin, AbstractBaseUser, AbstractBaseModel):
         (FEMALE, "Female"),
         (OTHER, "Other"),
     ]
-    gender = models.CharField("Gender", max_length=255, choices=GENDER_OPTIONS)
-    dateOfBirth = models.DateField()
-    emergencyContact = models.EmailField()
-    governmentId = models.URLField()
-    profileImage = models.URLField()
+    gender = models.CharField(
+        "Gender", max_length=255, choices=GENDER_OPTIONS, default=None, null=True
+    )
+    dateOfBirth = models.DateField(default=None, null=True)
+    emergencyContact = models.EmailField(default=None, null=True)
+    governmentId = models.URLField(default=None, null=True)
+    profileImage = models.URLField(default=None, null=True)
+    role = models.ForeignKey(Role, default=None, on_delete=models.PROTECT, null=True)
