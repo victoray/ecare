@@ -45,6 +45,7 @@ class User(PermissionsMixin, AbstractBaseUser, AbstractBaseModel):
     gender = models.CharField(
         "Gender", max_length=255, choices=GENDER_OPTIONS, default=None, null=True
     )
+    legalName = models.CharField("Legal Name", max_length=255, default=None, null=True)
     dateOfBirth = models.DateField(default=None, null=True)
     emergencyContact = models.EmailField(default=None, null=True)
     governmentId = models.URLField(default=None, null=True)

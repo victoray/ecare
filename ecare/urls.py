@@ -17,10 +17,12 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 
+from ecare.role.views import RoleViewSet
 from ecare.user.views import UserViewSet
 
 router = routers.DefaultRouter()
 router.register(r"users", UserViewSet)
+router.register(r"roles", RoleViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
