@@ -51,3 +51,7 @@ class User(PermissionsMixin, AbstractBaseUser, AbstractBaseModel):
     governmentId = models.URLField(default=None, null=True)
     profileImage = models.URLField(default=None, null=True)
     role = models.ForeignKey(Role, default=None, on_delete=models.PROTECT, null=True)
+
+    @property
+    def roleType(self):
+        return self.role and self.role.type
