@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "drf_firebase_auth",
+    "corsheaders",
     # app
     "ecare.user",
     "ecare.role",
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -148,3 +150,12 @@ REST_FRAMEWORK = {
         "drf_firebase_auth.authentication.FirebaseAuthentication",
     ]
 }
+
+
+TWILIO_ACCOUNT_SID = os.environ.get("TWILIO_ACCOUNT_SID", None)
+TWILIO_API_KEY = os.environ.get("TWILIO_API_KEY", None)
+TWILIO_API_SECRET = os.environ.get("TWILIO_API_SECRET", None)
+TWILIO_CHAT_SERVICE_SID = os.environ.get("TWILIO_CHAT_SERVICE_SID", None)
+
+
+CORS_ALLOW_ALL_ORIGINS = True
