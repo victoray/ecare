@@ -18,11 +18,19 @@ from django.urls import path, include
 from rest_framework import routers
 
 from ecare.role.views import RoleViewSet
+from ecare.service.views import (
+    ServiceViewSet,
+    ServiceAddressViewSet,
+    AppointmentViewSet,
+)
 from ecare.user.views import UserViewSet
 
 router = routers.DefaultRouter()
 router.register(r"users", UserViewSet)
 router.register(r"roles", RoleViewSet)
+router.register(r"service_addresses", ServiceAddressViewSet)
+router.register(r"services", ServiceViewSet, basename="service")
+router.register(r"appointments", AppointmentViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),

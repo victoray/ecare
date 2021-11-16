@@ -45,10 +45,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "drf_firebase_auth",
     "corsheaders",
+    "django_filters",
     # app
     "ecare.user",
     "ecare.role",
     "ecare.verification",
+    "ecare.service",
 ]
 
 MIDDLEWARE = [
@@ -148,7 +150,8 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.SessionAuthentication",
         "drf_firebase_auth.authentication.FirebaseAuthentication",
-    ]
+    ],
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
 
 
