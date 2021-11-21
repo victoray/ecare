@@ -1,5 +1,6 @@
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
+from twilio.twiml.voice_response import Room
 
 from ecare.core.models import AbstractBaseModel
 from ecare.user.models import User

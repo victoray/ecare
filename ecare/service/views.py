@@ -17,12 +17,17 @@ class ServiceViewSet(viewsets.ModelViewSet):
         This view should return a list of all the purchases
         for the currently authenticated user.
         """
-        user = self.request.user
         queryset = Service.objects.all()
         username = self.request.query_params.get("user")
         if username is not None:
             queryset = queryset.filter(user=username)
         return queryset
+
+    def get_permissions(self, *args, **kwargs):
+        if self.action == "list":
+            return [permissions.AllowAny()]
+
+        return [permission_class() for permission_class in self.permission_classes]
 
 
 class ServiceAddressViewSet(viewsets.ModelViewSet):
