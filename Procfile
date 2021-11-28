@@ -1,3 +1,2 @@
-firebase: python firebase.py
-release: ./release.sh
+release: python firebase.py && ./release.sh
 web: gunicorn api.wsgi --log-file -
