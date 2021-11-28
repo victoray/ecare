@@ -1,2 +1,2 @@
-release: python firebase.py && ./release.sh
-web: python manage.py runserver
+release: ./release.sh
+web: python firebase.py && python manage.py runserver
