@@ -1,2 +1,2 @@
 release: python firebase.py && ./release.sh
-web: gunicorn api.wsgi --log-file -
+web: python manage.py runserver
