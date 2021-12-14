@@ -73,6 +73,7 @@ class ServiceAddressViewSet(viewsets.ModelViewSet):
 class AppointmentViewSet(viewsets.ModelViewSet):
     queryset = Appointment.objects.all()
     permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
 
     def get_serializer_class(self):
         if self.action in ["create", "update"]:
