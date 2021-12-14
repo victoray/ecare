@@ -18,5 +18,6 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             "profileImage",
             "role",
             "roleType",
+            "url",
         ]
         read_only_fields = ("email", "uuid", "username")
