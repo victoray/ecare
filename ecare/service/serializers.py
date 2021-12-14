@@ -56,6 +56,12 @@ class ServiceSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class AppointmentSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Appointment
+        fields = ["service", "patient", "appointmentDate", "careProvider", "uuid"]
+
+
+class RetrieveAppointmentSerializer(serializers.HyperlinkedModelSerializer):
     patient = UserSerializer()
     careProvider = UserSerializer()
 

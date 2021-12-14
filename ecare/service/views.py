@@ -9,6 +9,7 @@ from ecare.service.models import Service, ServiceAddress, Appointment
 from ecare.service.serializers import (
     ServiceSerializer,
     ServiceAddressSerializer,
+    RetrieveAppointmentSerializer,
     AppointmentSerializer,
 )
 
@@ -71,5 +72,10 @@ class ServiceAddressViewSet(viewsets.ModelViewSet):
 
 class AppointmentViewSet(viewsets.ModelViewSet):
     queryset = Appointment.objects.all()
-    serializer_class = AppointmentSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+    def get_serializer_class(self):
+        if self.action in ["create", "update"]:
+            return AppointmentSerializer
+
+        return RetrieveAppointmentSerializer
